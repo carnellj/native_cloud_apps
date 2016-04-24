@@ -1,0 +1,4 @@
+licensingservice:
+    image: ch2-thoughtmechanix/licensing-service
+    ports:
+      - "8080:8080"
