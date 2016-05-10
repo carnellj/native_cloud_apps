@@ -3,7 +3,7 @@ eurekaserver:
    ports:
        - "8761:8761"
 
-configserver1:
+configserver:
     image: ch4-thoughtmechanix/configurationserver
     ports:
        - "8888:8888"
@@ -12,31 +12,32 @@ configserver1:
     environment:
       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 
-configserver2:
-    image: ch4-thoughtmechanix/configurationserver
-    ports:
-       - "8889:8889"
-    links:
-        - "eurekaserver:eurekaserver"
-    environment:
-      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
-
-# database:
-#     image: postgres
+# configserver2:
+#     image: ch4-thoughtmechanix/configurationserver
 #     ports:
-#       - "5432:5432"
-#     environment:
-#       - POSTGRES_USER=postgres
-#       - POSTGRES_PASSWORD=p0stgr@s
-#       - POSTGRES_DB=eagle_eye_local
-#
-# licensingservice:
-#     image: ch3-thoughtmechanix/licensing-service
-#     ports:
-#       - "8080:8080"
+#        - "8889:8889"
 #     links:
-#       - "database:database"
-#       - "configserver:configserver"
+#         - "eurekaserver:eurekaserver"
 #     environment:
-#       PROFILE: "default"
-#       CONFIGSERVER_URI: "http://configserver:8888"
+#       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+
+database:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=p0stgr@s
+      - POSTGRES_DB=eagle_eye_local
+
+licensingservice:
+    image: ch4-thoughtmechanix/licensing-service
+    ports:
+      - "8080:8080"
+    links:
+      - "database:database"
+      - "configserver:configserver"
+      - "eurekaserver:eurekaserver"
+    environment:
+      PROFILE: "default"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
