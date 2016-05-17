@@ -37,18 +37,18 @@ public class LicenseServiceController {
     }
 
     @RequestMapping(value="{licenseId}",method = RequestMethod.PUT)
-    public String updateLicenses( @PathVariable("licenseId") String licenseId) {
-        return String.format("This is the put");
+    public void updateLicenses( @PathVariable("licenseId") String licenseId, @RequestBody License license) {
+        licenseService.updateLicense(license);
     }
 
     @RequestMapping(value="/",method = RequestMethod.POST)
     public void saveLicenses(@RequestBody License license) {
-       licenseService.saveLicense(license);
+        licenseService.saveLicense(license);
     }
 
     @RequestMapping(value="{licenseId}",method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public String deleteLicenses( @PathVariable("licenseId") String licenseId) {
-        return String.format("This is the Delete");
+    public void deleteLicenses( @PathVariable("licenseId") String licenseId, @RequestBody License license) {
+         licenseService.deleteLicense(license);
     }
 }

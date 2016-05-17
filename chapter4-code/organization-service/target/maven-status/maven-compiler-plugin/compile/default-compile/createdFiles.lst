@@ -1,0 +1,5 @@
+com/thoughtmechanix/organization/services/OrganizationService.class
+com/thoughtmechanix/organization/model/Organization.class
+com/thoughtmechanix/organization/controllers/OrganizationServiceController.class
+com/thoughtmechanix/organization/Application.class
+com/thoughtmechanix/organization/repository/OrganizationRepository.class

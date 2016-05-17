@@ -8,9 +8,9 @@ configserver:
     ports:
        - "8888:8888"
     links:
-        - "eurekaserver:eurekaserver"
+       - "eurekaserver:eurekaserver"
     environment:
-      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 
 # configserver2:
 #     image: ch4-thoughtmechanix/configurationserver
@@ -40,4 +40,19 @@ licensingservice:
       - "eurekaserver:eurekaserver"
     environment:
       PROFILE: "default"
+      SERVER_PORT: "8080"
       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+
+organizationservice:
+    image: ch4-thoughtmechanix/organization-service
+    ports:
+      - "8085:8085"
+    links:
+      - "database:database"
+      - "configserver:configserver"
+      - "eurekaserver:eurekaserver"
+    environment:
+      PROFILE: "default"
+      SERVER_PORT: "8085"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+

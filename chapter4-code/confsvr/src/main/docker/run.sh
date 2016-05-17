@@ -8,4 +8,4 @@ echo ">>>>>>>>>>>> Eureka Server has started"
 echo "********************************************************"
 echo "Starting Configuration Service with Eureka Endpoint:  $EUREKASERVER_URI";
 echo "********************************************************"
-java -Deureka.client.serviceUrl.defaultZone=$EUREKASERVER_URI -jar /usr/local/configserver/configurationserver-0.0.1-SNAPSHOT.jar
+java -Djava.security.egd=file:/dev/./urandom -Deureka.client.serviceUrl.defaultZone=$EUREKASERVER_URI -jar /usr/local/configserver/configurationserver-0.0.1-SNAPSHOT.jar

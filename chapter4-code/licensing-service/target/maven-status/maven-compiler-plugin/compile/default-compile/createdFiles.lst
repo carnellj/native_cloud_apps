@@ -5,4 +5,3 @@ com/thoughtmechanix/licenses/model/License.class
 com/thoughtmechanix/licenses/repository/LicenseRepository.class
 com/thoughtmechanix/licenses/services/OrganizationService.class
 com/thoughtmechanix/licenses/Application.class
-com/thoughtmechanix/licenses/model/Organization.class
