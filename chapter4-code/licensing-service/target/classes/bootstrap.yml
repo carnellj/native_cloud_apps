@@ -10,3 +10,6 @@ spring:
       discovery:
         enabled: true
         serviceId: configserver
+
+
+
