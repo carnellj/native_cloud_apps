@@ -23,9 +23,6 @@ public class LicenseService {
     @Autowired
     private LicenseRepository licenseRepository;
 
-//    @Autowired
-//    private OrganizationClient orgClient;
-
     @Autowired
     ServiceConfig config;
 
@@ -49,7 +46,7 @@ public class LicenseService {
     private Organization retrieveOrgInfo(String organizationId){
         ResponseEntity<Organization> restExchange =
                 restTemplate.exchange(
-                        "http://ORGANIZATIONSERVICE/v1/organizations/{organizationId}",
+                        "http://organizationservice/v1/organizations/{organizationId}",
                         HttpMethod.GET,
                         null, Organization.class, organizationId);
 
@@ -59,14 +56,15 @@ public class LicenseService {
     public License getLicense(String organizationId,String licenseId) {
         License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
 
-       // Organization org = orgClient.getOrganization("organizationId");
         getServiceJSON(organizationId);
-
         Organization org = retrieveOrgInfo( organizationId);
 
-        System.out.println("!!!! Contact Name:  " + org.getContactName());
-        System.out.println("!!!! Contact Phone: " + org.getContactPhone());
-        return license.withComment(config.getExampleProperty());
+        return license
+                .withOrganizationName( org.getName())
+                .withContactName( org.getContactName())
+                .withContactEmail( org.getContactEmail() )
+                .withContactPhone( org.getContactPhone() )
+                .withComment(config.getExampleProperty());
     }
 
     public List<License> getLicensesByOrg(String organizationId){

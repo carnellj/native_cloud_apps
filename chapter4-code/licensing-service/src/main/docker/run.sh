@@ -18,13 +18,6 @@ echo "********************************************************"
 while ! `nc -z configserver 8888`; do sleep 3; done
 echo "*******  Configuration Server has started"
 
-echo "********************************************************"
-echo "Sleeping for for 80 seconds.  This is to make sure that*"
-echo "config is fully registered with the eureka.  This would*"
-echo "not be a problem in a production env where the config  *"
-echo "and discovery services would already be up and running.*"
-echo "********************************************************"
-#sleep 200
 
 echo "********************************************************"
 echo "Starting License Server with Configuration Service via Eureka :  $EUREKASERVER_URI" ON PORT: $SERVER_PORT;

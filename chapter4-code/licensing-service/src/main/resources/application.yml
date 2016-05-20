@@ -1,16 +1,3 @@
-#spring:
-#  application:
-#    name: licensingservice
-#  profiles:
-#    active:
-#      default
-#  cloud:
-#    config:
-#      enabled: truecd
-##      discovery:
-##        enabled: true
-##        serviceId: configserver
-
 eureka:
   instance:
     preferIpAddress: true
