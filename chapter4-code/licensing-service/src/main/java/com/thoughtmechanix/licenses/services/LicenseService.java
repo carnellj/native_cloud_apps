@@ -5,7 +5,6 @@ import com.thoughtmechanix.licenses.config.ServiceConfig;
 import com.thoughtmechanix.licenses.model.License;
 import com.thoughtmechanix.licenses.model.Organization;
 import com.thoughtmechanix.licenses.repository.LicenseRepository;
-import org.apache.commons.lang.builder.ToStringBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
@@ -41,8 +40,8 @@ public class LicenseService {
         ServiceInstance localInstance = discoveryClient.getLocalServiceInstance();
         System.out.println( "Hello World: "+ localInstance.getServiceId()+":"+localInstance.getHost()+":"+localInstance.getPort());
 
-        discoveryClient.getInstances("ORGANIZATIONSERVICE").forEach((ServiceInstance s) -> {
-            System.out.println("!!!!!" + s.getUri());
+        discoveryClient.getServices().forEach(s -> {
+            System.out.println("!!!!!" + s);
         });
     }
 

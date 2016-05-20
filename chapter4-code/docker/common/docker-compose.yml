@@ -41,6 +41,7 @@ licensingservice:
     environment:
       PROFILE: "default"
       SERVER_PORT: "8080"
+      CONFIGSERVER_URI: "http://configserver:8888"
       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 
 organizationservice:
@@ -54,6 +55,7 @@ organizationservice:
     environment:
       PROFILE: "default"
       SERVER_PORT: "8085"
+      CONFIGSERVER_URI: "http://configserver:8888"
       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 
 #organizationservice2:

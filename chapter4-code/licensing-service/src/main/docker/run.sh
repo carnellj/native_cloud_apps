@@ -24,9 +24,12 @@ echo "config is fully registered with the eureka.  This would*"
 echo "not be a problem in a production env where the config  *"
 echo "and discovery services would already be up and running.*"
 echo "********************************************************"
-sleep 200
+#sleep 200
 
 echo "********************************************************"
 echo "Starting License Server with Configuration Service via Eureka :  $EUREKASERVER_URI" ON PORT: $SERVER_PORT;
 echo "********************************************************"
-java -Djava.security.egd=file:/dev/./urandom -Dserver.port=$SERVER_PORT -Deureka.client.serviceUrl.defaultZone=$EUREKASERVER_URI -Dspring.profiles.active=$PROFILE -jar /usr/local/licensingservice/licensing-service-0.0.1-SNAPSHOT.jar
+java -Djava.security.egd=file:/dev/./urandom -Dserver.port=$SERVER_PORT   \
+     -Deureka.client.serviceUrl.defaultZone=$EUREKASERVER_URI             \
+     -Dspring.cloud.config.uri=$CONFIGSERVER_URI                          \
+     -Dspring.profiles.active=$PROFILE -jar /usr/local/licensingservice/licensing-service-0.0.1-SNAPSHOT.jar

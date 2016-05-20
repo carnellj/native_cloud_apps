@@ -1,8 +1,21 @@
+#spring:
+#  application:
+#    name: licensingservice
+#  profiles:
+#    active:
+#      default
+#  cloud:
+#    config:
+#      enabled: truecd
+##      discovery:
+##        enabled: true
+##        serviceId: configserver
+
 eureka:
   instance:
     preferIpAddress: true
   client:
     registerWithEureka: true
-    fetchRegistry: false
+    fetchRegistry: true
     serviceUrl:
-      defaultZone: http://eurekaserver:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
