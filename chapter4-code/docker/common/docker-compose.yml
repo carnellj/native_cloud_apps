@@ -58,17 +58,17 @@ organizationservice:
       CONFIGSERVER_URI: "http://configserver:8888"
       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 
-organizationservice2:
-    image: ch4-thoughtmechanix/organization-service
-    ports:
-      - "8086:8086"
-    links:
-      - "database:database"
-      - "configserver:configserver"
-      - "eurekaserver:eurekaserver"
-    environment:
-      PROFILE: "default"
-      SERVER_PORT: "8085"
-      CONFIGSERVER_URI: "http://configserver:8888"
-      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+#organizationservice2:
+#    image: ch4-thoughtmechanix/organization-service
+#    ports:
+#      - "8086:8086"
+#    links:
+#      - "database:database"
+#      - "configserver:configserver"
+#      - "eurekaserver:eurekaserver"
+#    environment:
+#      PROFILE: "default"
+#      SERVER_PORT: "8085"
+#      CONFIGSERVER_URI: "http://configserver:8888"
+#      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 

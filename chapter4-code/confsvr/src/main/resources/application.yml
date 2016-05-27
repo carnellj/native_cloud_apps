@@ -1,5 +1,5 @@
 #
-#   This is the core configuration for a configuration service.  I have two examples here:
+#   This is the core configuration for service.  I have two examples here:
 #
 #       -  A configuration service which completelty loads the configuration for the services
 #          from the local file server of the config service.  This should only be used for

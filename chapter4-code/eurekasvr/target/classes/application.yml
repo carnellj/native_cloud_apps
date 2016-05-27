@@ -1,9 +1,12 @@
+#Default port is 8761
 server:
-  port: ${PORT:8761}
+  port: 8761
 
 eureka:
+  instance:
+    preferIpAddress: true
   client:
     registerWithEureka: false
     fetchRegistry: false
-    server:
-      waitTimeInMsWhenSyncEmpty: 0
+  server:
+    waitTimeInMsWhenSyncEmpty: 0
