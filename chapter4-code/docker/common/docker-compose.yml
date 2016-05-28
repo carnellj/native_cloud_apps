@@ -1,10 +1,12 @@
 eurekaserver:
-   image: ch4-thoughtmechanix/eurekasvr
+   image:   ch4-thoughtmechanix/eurekasvr
+   restart: always
    ports:
        - "8761:8761"
 
 configserver:
     image: ch4-thoughtmechanix/configurationserver
+    restart: always
     ports:
        - "8888:8888"
     links:
@@ -32,6 +34,7 @@ database:
 
 licensingservice:
     image: ch4-thoughtmechanix/licensing-service
+    restart: always
     ports:
       - "8080:8080"
     links:
@@ -46,6 +49,7 @@ licensingservice:
 
 organizationservice:
     image: ch4-thoughtmechanix/organization-service
+    restart: always
     ports:
       - "8085:8085"
     links:
@@ -58,17 +62,18 @@ organizationservice:
       CONFIGSERVER_URI: "http://configserver:8888"
       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 
-#organizationservice2:
-#    image: ch4-thoughtmechanix/organization-service
-#    ports:
-#      - "8086:8086"
-#    links:
-#      - "database:database"
-#      - "configserver:configserver"
-#      - "eurekaserver:eurekaserver"
-#    environment:
-#      PROFILE: "default"
-#      SERVER_PORT: "8085"
-#      CONFIGSERVER_URI: "http://configserver:8888"
-#      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+organizationservice2:
+    image: ch4-thoughtmechanix/organization-service
+    restart: always
+    ports:
+      - "8086:8086"
+    links:
+      - "database:database"
+      - "configserver:configserver"
+      - "eurekaserver:eurekaserver"
+    environment:
+      PROFILE: "default"
+      SERVER_PORT: "8085"
+      CONFIGSERVER_URI: "http://configserver:8888"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 

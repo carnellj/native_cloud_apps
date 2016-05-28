@@ -1,6 +1,5 @@
 package com.thoughtmechanix.licenses.services;
 
-import com.thoughtmechanix.licenses.clients.OrganizationClient;
 import com.thoughtmechanix.licenses.config.ServiceConfig;
 import com.thoughtmechanix.licenses.model.License;
 import com.thoughtmechanix.licenses.model.Organization;
@@ -8,7 +7,6 @@ import com.thoughtmechanix.licenses.repository.LicenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.cloud.netflix.eureka.EurekaDiscoveryClient;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -29,18 +27,7 @@ public class LicenseService {
     @Autowired
     RestTemplate restTemplate;
 
-    @Autowired
-    private DiscoveryClient discoveryClient;
 
-    private void getServiceJSON (String organizationId){
-        System.out.println("I am in discovery client");
-        ServiceInstance localInstance = discoveryClient.getLocalServiceInstance();
-        System.out.println( "Hello World: "+ localInstance.getServiceId()+":"+localInstance.getHost()+":"+localInstance.getPort());
-
-        discoveryClient.getServices().forEach(s -> {
-            System.out.println("!!!!!" + s);
-        });
-    }
 
 
     private Organization retrieveOrgInfo(String organizationId){
@@ -56,7 +43,6 @@ public class LicenseService {
     public License getLicense(String organizationId,String licenseId) {
         License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
 
-        getServiceJSON(organizationId);
         Organization org = retrieveOrgInfo( organizationId);
 
         return license
