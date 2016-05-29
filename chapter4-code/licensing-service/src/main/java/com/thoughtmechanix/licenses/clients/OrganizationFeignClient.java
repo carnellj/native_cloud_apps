@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @FeignClient("organizationservice")
-public interface OrganizationClient {
+public interface OrganizationFeignClient {
     @RequestMapping(
             method= RequestMethod.GET,
             value="/v1/organizations/{organizationId}",

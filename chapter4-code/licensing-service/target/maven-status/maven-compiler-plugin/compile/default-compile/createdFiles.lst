@@ -1,10 +1,12 @@
 com/thoughtmechanix/licenses/config/ServiceConfig.class
 com/thoughtmechanix/licenses/services/LicenseService.class
+com/thoughtmechanix/licenses/clients/OrganizationRestTemplateClient.class
 com/thoughtmechanix/licenses/controllers/LicenseServiceController.class
 com/thoughtmechanix/licenses/model/License.class
 com/thoughtmechanix/licenses/repository/LicenseRepository.class
 com/thoughtmechanix/licenses/services/DiscoveryService.class
 com/thoughtmechanix/licenses/controllers/ToolsController.class
-com/thoughtmechanix/licenses/clients/OrganizationClient.class
+com/thoughtmechanix/licenses/clients/OrganizationFeignClient.class
+com/thoughtmechanix/licenses/clients/OrganizationDiscoveryClient.class
 com/thoughtmechanix/licenses/Application.class
 com/thoughtmechanix/licenses/model/Organization.class

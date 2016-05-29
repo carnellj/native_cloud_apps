@@ -1,16 +1,14 @@
 package com.thoughtmechanix.licenses.services;
 
+import com.thoughtmechanix.licenses.clients.OrganizationDiscoveryClient;
+import com.thoughtmechanix.licenses.clients.OrganizationFeignClient;
+import com.thoughtmechanix.licenses.clients.OrganizationRestTemplateClient;
 import com.thoughtmechanix.licenses.config.ServiceConfig;
 import com.thoughtmechanix.licenses.model.License;
 import com.thoughtmechanix.licenses.model.Organization;
 import com.thoughtmechanix.licenses.repository.LicenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,26 +22,44 @@ public class LicenseService {
     @Autowired
     ServiceConfig config;
 
+
     @Autowired
-    RestTemplate restTemplate;
+    OrganizationFeignClient organizationFeignClient;
+
+    @Autowired
+    OrganizationRestTemplateClient organizationRestClient;
+
+    @Autowired
+    OrganizationDiscoveryClient organizationDiscoveryClient;
 
 
+    private Organization retrieveOrgInfo(String organizationId, String clientType){
+        Organization organization = null;
 
+        switch (clientType) {
+            case "feign":
+                System.out.println("I am using the feign client");
+                organization = organizationFeignClient.getOrganization(organizationId);
+                break;
+            case "rest":
+                System.out.println("I am using the rest client");
+                organization = organizationRestClient.getOrganization(organizationId);
+                break;
+            case "discovery":
+                System.out.println("I am using the discovery client");
+                organization = organizationDiscoveryClient.getOrganization(organizationId);
+                break;
+            default:
+                organization = organizationRestClient.getOrganization(organizationId);
+        }
 
-    private Organization retrieveOrgInfo(String organizationId){
-        ResponseEntity<Organization> restExchange =
-                restTemplate.exchange(
-                        "http://organizationservice/v1/organizations/{organizationId}",
-                        HttpMethod.GET,
-                        null, Organization.class, organizationId);
-
-        return restExchange.getBody();
+        return organization;
     }
 
-    public License getLicense(String organizationId,String licenseId) {
+    public License getLicense(String organizationId,String licenseId, String clientType) {
         License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
 
-        Organization org = retrieveOrgInfo( organizationId);
+        Organization org = retrieveOrgInfo(organizationId, clientType);
 
         return license
                 .withOrganizationName( org.getName())
