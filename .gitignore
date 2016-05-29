@@ -9,9 +9,11 @@
 .gradle
 build
 bin
-/target/
+target
 git.properties
 .idea
 *.iml
 .factorypath
 *.class
+*.jar
+*.html
