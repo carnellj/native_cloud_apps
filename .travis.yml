@@ -10,3 +10,6 @@ env:
   - TEST_DIR=chapter4-code/licensing-service
   - TEST_DIR=chapter4-code/organization-service
 script: cd $TEST_DIR && mvn clean package
+notifications:
+  email:
+    - carnell28@gmail.com
