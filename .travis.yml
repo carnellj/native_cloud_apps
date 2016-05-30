@@ -1,0 +1,4 @@
+language:  java
+env:
+  - TEST_DIR=chapter2-code
+script: cd $TEST_DIR && mvn clean package 

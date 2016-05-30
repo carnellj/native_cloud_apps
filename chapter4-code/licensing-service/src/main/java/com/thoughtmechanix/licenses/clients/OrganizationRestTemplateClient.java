@@ -1,6 +1,5 @@
 package com.thoughtmechanix.licenses.clients;
 
-
 import com.thoughtmechanix.licenses.model.Organization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;

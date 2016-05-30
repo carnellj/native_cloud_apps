@@ -32,7 +32,7 @@ public class OrganizationDiscoveryClient {
                         serviceUri,
                         HttpMethod.GET,
                         null, Organization.class, organizationId);
-
+        
         return restExchange.getBody();
     }
 }
