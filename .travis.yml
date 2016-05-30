@@ -1,6 +1,11 @@
 language:  java
 jdk:
   - oraclejdk8
+notifications:
+  email:
+    - carnell28@gmail.com
+  on_success: always
+  on_failure: always 
 env:
   - TEST_DIR=chapter2-code
   - TEST_DIR=chapter3-code/confsvr
@@ -10,6 +15,3 @@ env:
   - TEST_DIR=chapter4-code/licensing-service
   - TEST_DIR=chapter4-code/organization-service
 script: cd $TEST_DIR && mvn clean package
-notifications:
-  email:
-    - carnell28@gmail.com
