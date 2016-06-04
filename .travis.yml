@@ -21,4 +21,4 @@ env:
 
 script: 
   -  cd $TEST_DIR && mvn clean package
-  -  docker build -f $TEST_DIR/src/main/docker/Dockerfile
+  -  cd $TEST_DIR/src/main/docker && docker build .
