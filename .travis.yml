@@ -1,16 +1,20 @@
 language:  java
 jdk:
   - oraclejdk8
+
 sudo: required
 services:
   - docker
+
 notifications:
   slack: teamcarnell:zhTADgjsb7yJ5RPEd7LPNFwI
   email:
     - carnell28@gmail.com
   on_success: always
   on_failure: always 
+
 env:
+  - DOCKER_VERSION=1.10.3
   - TEST_DIR=chapter2-code
   - TEST_DIR=chapter3-code/confsvr
   - TEST_DIR=chapter3-code/licensing-service
@@ -18,4 +22,5 @@ env:
   - TEST_DIR=chapter4-code/eurekasvr
   - TEST_DIR=chapter4-code/licensing-service
   - TEST_DIR=chapter4-code/organization-service
+
 script: cd $TEST_DIR && mvn clean package docker:build
