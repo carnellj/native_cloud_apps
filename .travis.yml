@@ -21,4 +21,4 @@ env:
 
 script: 
   -  cd $TEST_DIR && mvn clean package
-  -  cd $TEST_DIR && cd src/main/docker && docker build .
+  -  cd $TRAVIS_BUILD_DIR/$TEST_DIR/src/main/docker && docker build .
