@@ -21,4 +21,5 @@ env:
 
 script: 
   -  cd $TEST_DIR && mvn clean package
+  -  cp $TRAVIS_BUILD_DIR/$TEST_DIR/target/*.jar $TRAVIS_BUILD_DIR/$TEST_DIR/src/main/docker/.
   -  cd $TRAVIS_BUILD_DIR/$TEST_DIR/src/main/docker && docker build .
