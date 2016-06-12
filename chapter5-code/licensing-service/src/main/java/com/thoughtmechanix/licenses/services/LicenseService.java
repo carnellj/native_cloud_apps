@@ -1,5 +1,7 @@
 package com.thoughtmechanix.licenses.services;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.ribbon.proxy.annotation.Hystrix;
 import com.thoughtmechanix.licenses.clients.OrganizationDiscoveryClient;
 import com.thoughtmechanix.licenses.clients.OrganizationFeignClient;
 import com.thoughtmechanix.licenses.clients.OrganizationRestTemplateClient;
@@ -56,6 +58,7 @@ public class LicenseService {
         return organization;
     }
 
+
     public License getLicense(String organizationId,String licenseId, String clientType) {
         License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
 
@@ -69,8 +72,9 @@ public class LicenseService {
                 .withComment(config.getExampleProperty());
     }
 
+    @HystrixCommand
     public List<License> getLicensesByOrg(String organizationId){
-        return licenseRepository.findByOrganizationId( organizationId );
+        return licenseRepository.findByOrganizationId(organizationId);
     }
 
     public void saveLicense(License license){
