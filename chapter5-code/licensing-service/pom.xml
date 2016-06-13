@@ -76,7 +76,7 @@
         <dependency>
             <groupId>com.netflix.hystrix</groupId>
             <artifactId>hystrix-core</artifactId>
-            <version>1.4.0-RC4</version>
+            <version>1.0.2</version>
         </dependency>
     </dependencies>
 

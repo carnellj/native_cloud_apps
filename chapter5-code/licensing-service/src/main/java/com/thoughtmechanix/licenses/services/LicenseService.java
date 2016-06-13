@@ -1,7 +1,6 @@
 package com.thoughtmechanix.licenses.services;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.netflix.ribbon.proxy.annotation.Hystrix;
 import com.thoughtmechanix.licenses.clients.OrganizationDiscoveryClient;
 import com.thoughtmechanix.licenses.clients.OrganizationFeignClient;
 import com.thoughtmechanix.licenses.clients.OrganizationRestTemplateClient;
@@ -74,6 +73,11 @@ public class LicenseService {
 
     @HystrixCommand
     public List<License> getLicensesByOrg(String organizationId){
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return licenseRepository.findByOrganizationId(organizationId);
     }
 
