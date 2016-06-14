@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 import java.util.UUID;
 
 @Service
@@ -71,13 +72,26 @@ public class LicenseService {
                 .withComment(config.getExampleProperty());
     }
 
-    @HystrixCommand
-    public List<License> getLicensesByOrg(String organizationId){
+    private void randomlyRunLong(){
+      Random rand = new Random();
+
+      int randomNum = rand.nextInt((3 - 1) + 1) + 1;
+
+      if (randomNum==3) sleep();
+    }
+
+    private void sleep(){
         try {
-            Thread.sleep(10000);
+            Thread.sleep(11000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    @HystrixCommand()
+    public List<License> getLicensesByOrg(String organizationId){
+        randomlyRunLong();
+
         return licenseRepository.findByOrganizationId(organizationId);
     }
 
@@ -85,7 +99,6 @@ public class LicenseService {
         license.withId( UUID.randomUUID().toString());
 
         licenseRepository.save(license);
-
     }
 
     public void updateLicense(License license){
