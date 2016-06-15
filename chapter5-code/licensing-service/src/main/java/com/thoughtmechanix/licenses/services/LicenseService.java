@@ -11,6 +11,7 @@ import com.thoughtmechanix.licenses.repository.LicenseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -77,6 +78,7 @@ public class LicenseService {
 
       int randomNum = rand.nextInt((3 - 1) + 1) + 1;
 
+      System.out.println("!!!!RANDOM VALUE:  " + randomNum);
       if (randomNum==3) sleep();
     }
 
@@ -88,11 +90,22 @@ public class LicenseService {
         }
     }
 
-    @HystrixCommand()
+    @HystrixCommand(fallbackMethod = "buildFallbackLicenseList")
     public List<License> getLicensesByOrg(String organizationId){
         randomlyRunLong();
 
         return licenseRepository.findByOrganizationId(organizationId);
+    }
+
+    private List<License> buildFallbackLicenseList(String organizationId){
+        List<License> fallbackList = new ArrayList<>();
+        License license = new License()
+                .withId("0000000-00-00000")
+                .withOrganizationId( organizationId )
+                .withProductName("Sorry no licensing information currently available");
+
+        fallbackList.add(license);
+        return fallbackList;
     }
 
     public void saveLicense(License license){
