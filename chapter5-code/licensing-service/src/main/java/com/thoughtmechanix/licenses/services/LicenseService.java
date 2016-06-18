@@ -1,6 +1,7 @@
 package com.thoughtmechanix.licenses.services;
 
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.thoughtmechanix.licenses.clients.OrganizationDiscoveryClient;
 import com.thoughtmechanix.licenses.clients.OrganizationFeignClient;
 import com.thoughtmechanix.licenses.clients.OrganizationRestTemplateClient;
@@ -78,7 +79,6 @@ public class LicenseService {
 
       int randomNum = rand.nextInt((3 - 1) + 1) + 1;
 
-      System.out.println("!!!!RANDOM VALUE:  " + randomNum);
       if (randomNum==3) sleep();
     }
 
@@ -90,7 +90,15 @@ public class LicenseService {
         }
     }
 
-    @HystrixCommand(fallbackMethod = "buildFallbackLicenseList")
+
+    @HystrixCommand(fallbackMethod = "buildFallbackLicenseList",
+            threadPoolKey = "licenseByOrgThreadPool",
+            commandProperties ={@HystrixProperty(name="execution.isolation.thread.timeoutInMilliseconds",
+                                                 value="12000")},
+            threadPoolProperties =
+                    {@HystrixProperty(name = "coreSize",value="30"),
+                     @HystrixProperty(name="maxQueueSize", value="10")}
+    )
     public List<License> getLicensesByOrg(String organizationId){
         randomlyRunLong();
 
