@@ -12,12 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value="v1/organizations")
 public class OrganizationServiceController {
     @Autowired
     private OrganizationService orgService;
-
 
     @RequestMapping(value="/{organizationId}",method = RequestMethod.GET)
     public Organization getOrganization( @PathVariable("organizationId") String organizationId) {
