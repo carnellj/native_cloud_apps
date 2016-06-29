@@ -28,11 +28,10 @@ public class LicenseService {
     OrganizationRestTemplateClient organizationRestClient;
 
 
-
     public License getLicense(String organizationId,String licenseId) {
         License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
 
-        Organization org = organizationRestClient.getOrganization(organizationId);
+        Organization org = getOrganization(organizationId);
 
         return license
                 .withOrganizationName( org.getName())
@@ -42,13 +41,17 @@ public class LicenseService {
                 .withComment(config.getExampleProperty());
     }
 
+    @HystrixCommand
+    private Organization getOrganization(String organizationId) {
+        return organizationRestClient.getOrganization(organizationId);
+    }
+
     private void randomlyRunLong(){
       Random rand = new Random();
 
       int randomNum = rand.nextInt((3 - 1) + 1) + 1;
 
-//      if (randomNum==3) sleep();
-        sleep();
+      if (randomNum==3) sleep();
     }
 
     private void sleep(){
