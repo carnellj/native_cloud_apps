@@ -21,6 +21,14 @@ env:
   - TEST_DIR=chapter4-code/eurekasvr
   - TEST_DIR=chapter4-code/licensing-service
   - TEST_DIR=chapter4-code/organization-service
+  - TEST_DIR=chapter5-code/confsvr
+  - TEST_DIR=chapter5-code/eurekasvr
+  - TEST_DIR=chapter5-code/licensing-service
+  - TEST_DIR=chapter5-code/organization-service
+  - TEST_DIR=chapter6-code/confsvr
+  - TEST_DIR=chapter6-code/eurekasvr
+  - TEST_DIR=chapter6-code/licensing-service
+  - TEST_DIR=chapter6-code/organization-service
 
 script: 
   -  cd $TEST_DIR && mvn clean package docker:build
