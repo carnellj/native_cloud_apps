@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -20,8 +21,12 @@ public class OrganizationServiceController {
     @Autowired
     private OrganizationService orgService;
 
+    @Autowired
+    private HttpServletRequest request;
+
     @RequestMapping(value="/{organizationId}",method = RequestMethod.GET)
     public Organization getOrganization( @PathVariable("organizationId") String organizationId) {
+        System.out.println("--->CORRELATION-ID IN ORG: " + request.getHeader("tmx-correlation-id"));
         return orgService.getOrg(organizationId);
     }
 
