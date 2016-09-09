@@ -15,9 +15,16 @@ eureka:
     serviceUrl:
         defaultZone: http://localhost:8761/eureka/
 
+#Setting logging levels
+logging:
+  level:
+    com.netflix: WARN
+    org.springframework.web: WARN
+
+
 zuul:
-  debug:
-    request: true
+ # debug:
+  #  request: true
   prefix:  /api
 
 #  routes:

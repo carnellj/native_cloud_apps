@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController
@@ -23,6 +24,9 @@ public class LicenseServiceController {
     @Autowired
     private ServiceConfig serviceConfig;
 
+    @Autowired
+    private HttpServletRequest request;
+
     @RequestMapping(value="/",method = RequestMethod.GET)
     public List<License> getLicenses( @PathVariable("organizationId") String organizationId) {
 
@@ -32,7 +36,7 @@ public class LicenseServiceController {
     @RequestMapping(value="/{licenseId}",method = RequestMethod.GET)
     public License getLicenses( @PathVariable("organizationId") String organizationId,
                                 @PathVariable("licenseId") String licenseId) {
-
+        System.out.println("--->CORRELATION-ID IN LICENSE: " + request.getHeader("tmx-correlation-id"));
         return licenseService.getLicense(organizationId, licenseId);
     }
 
