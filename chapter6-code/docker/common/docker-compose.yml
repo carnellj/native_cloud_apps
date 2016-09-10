@@ -12,6 +12,17 @@ configserver:
     environment:
        EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 
+zuulserver:
+    image: ch6-thoughtmechanix/zuulsvr
+    ports:
+      - "5555:5555"
+    links:
+      - "eurekaserver:eurekaserver"
+    environment:
+      PROFILE: "default"
+      SERVER_PORT: "5555"
+      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+
 database:
     image: postgres
     ports:
@@ -30,6 +41,7 @@ licensingservice:
       - "database:database"
       - "configserver:configserver"
       - "eurekaserver:eurekaserver"
+      - "zuulserver:zuulserver"
     environment:
       PROFILE: "default"
       SERVER_PORT: "8080"
@@ -44,19 +56,11 @@ organizationservice:
       - "database:database"
       - "configserver:configserver"
       - "eurekaserver:eurekaserver"
+      - "zuulserver:zuulserver"
     environment:
       PROFILE: "default"
       SERVER_PORT: "8085"
       CONFIGSERVER_URI: "http://configserver:8888"
       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 
-zuulservice:
-    image: ch6-thoughtmechanix/zuulsvr
-    ports:
-      - "5555:5555"
-    links:
-      - "eurekaserver:eurekaserver"
-    environment:
-      PROFILE: "default"
-      SERVER_PORT: "5555"
-      EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
+

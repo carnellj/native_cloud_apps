@@ -2,9 +2,8 @@ package com.thoughtmechanix.zuulsvr.filters;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
-import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.servlet.http.HttpServletRequest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 /*
@@ -17,6 +16,8 @@ public class TrackingFilter extends ZuulFilter{
     private static final String FILTER_TYPE = "pre";
     private static final int FILTER_ORDER =  1;
     private static final boolean  SHOULD_FILTER=true;
+
+    private static final Logger logger = LoggerFactory.getLogger(TrackingFilter.class);
 
     public TrackingFilter(){
 
@@ -68,12 +69,12 @@ public class TrackingFilter extends ZuulFilter{
 
     public Object run() {
 
-        if (isCorrelationIdPresent()){
-            System.out.printf("!!!!!!> Correlation-id found: %s. ", getCorrelationIdFromHeader());
+        if (isCorrelationIdPresent()) {
+            logger.debug(">>>> tmx-correlation-id found in tracking filter: {}. ", getCorrelationIdFromHeader());
         }
         else{
             setCorrelationId( generateCorrelationId() );
-            System.out.printf("!!!!!!> Correlation-id generated: %s.", getCorrelationIdFromHeader());
+            logger.debug(">>>> tmx-correlation-id generated in tracking filter: {}.", getCorrelationIdFromHeader());
         }
         return null;
     }

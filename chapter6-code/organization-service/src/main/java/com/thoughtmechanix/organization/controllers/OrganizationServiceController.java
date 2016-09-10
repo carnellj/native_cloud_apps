@@ -3,6 +3,9 @@ package com.thoughtmechanix.organization.controllers;
 
 import com.thoughtmechanix.organization.model.Organization;
 import com.thoughtmechanix.organization.services.OrganizationService;
+import com.thoughtmechanix.organization.utils.UserContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,12 +24,13 @@ public class OrganizationServiceController {
     @Autowired
     private OrganizationService orgService;
 
-    @Autowired
-    private HttpServletRequest request;
+
+    private static final Logger logger = LoggerFactory.getLogger(OrganizationServiceController.class);
+
 
     @RequestMapping(value="/{organizationId}",method = RequestMethod.GET)
     public Organization getOrganization( @PathVariable("organizationId") String organizationId) {
-        System.out.println("--->CORRELATION-ID IN ORG: " + request.getHeader("tmx-correlation-id"));
+        logger.debug(">>>>> tmx-correlation-id received in organization service: {}" , UserContext.getCorrelationId());
         return orgService.getOrg(organizationId);
     }
 
