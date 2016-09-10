@@ -20,20 +20,12 @@ public class OrganizationRestTemplateClient {
     private static final Logger logger = LoggerFactory.getLogger(OrganizationRestTemplateClient.class);
 
     public Organization getOrganization(String organizationId){
-//        ResponseEntity<Organization> restExchange =
-//                restTemplate.exchange(
-//                        "http://organizationservice/v1/organizations/{organizationId}",
-//                        HttpMethod.GET,
-//                        null, Organization.class, organizationId);
-
-        RestTemplate template = new RestTemplate();
-
         logger.debug(">>> In Licensing Service.getOrganization: {}", UserContext.getCorrelationId());
         ResponseEntity<Organization> restExchange =
-                template.exchange(
+                restTemplate.exchange(
                         "http://zuulserver:5555/api/organizationservice/v1/organizations/{organizationId}",
                         HttpMethod.GET,
-                        new HttpEntity<String>(UserContext.getHttpHeaders()), Organization.class, organizationId);
+                        null, Organization.class, organizationId);
         return restExchange.getBody();
     }
 }
