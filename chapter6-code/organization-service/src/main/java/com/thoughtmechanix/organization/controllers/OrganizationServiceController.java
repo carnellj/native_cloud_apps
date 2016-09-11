@@ -35,9 +35,10 @@ public class OrganizationServiceController {
     @RequestMapping(value="/{organizationId}",method = RequestMethod.GET)
     public Organization getOrganization( @PathVariable("organizationId") String organizationId) {
         Map<String, Object> data = new HashMap<String, Object>();
-        data.put("tmx-correlation-id", UserContext.getCorrelationId());
-       
-        FLOG.log(">>>>> tmx-correlation-id received in organization service: {}", data );
+        data.put(" tmx-correlation-id", UserContext.getCorrelationId());
+
+        FLOG.log("organizationservice", data );
+        logger.debug("I AM HERE !!!!!");
         return orgService.getOrg(organizationId);
     }
 
