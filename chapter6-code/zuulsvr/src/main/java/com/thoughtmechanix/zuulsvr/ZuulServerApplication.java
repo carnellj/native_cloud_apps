@@ -1,5 +1,6 @@
 package com.thoughtmechanix.zuulsvr;
 
+import com.thoughtmechanix.zuulsvr.filters.AuthenticationFilter;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -17,10 +18,11 @@ public class ZuulServerApplication {
     public TrackingFilter trackingFilter(){
         return new TrackingFilter();
     }
+
+    @Bean
+    public AuthenticationFilter authenticationFilter(){ return new AuthenticationFilter();}
     public static void main(String[] args) {
         SpringApplication.run(ZuulServerApplication.class, args);
     }
 }
 
-//@Might need to enable @EnableZuulServer to Inject my bean
-//http://stackoverflow.com/questions/35966071/dynamic-proxying-with-zuul
