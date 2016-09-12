@@ -34,13 +34,4 @@ env:
   - secure: ozeWr+59imfFLVMFtajdjsnhkatpxubNGKyPROUy/3GDySB3/ut1t/7xpl9/GdGmXG3rU1QB/Wl37KbfPzyZPWK64uBvKqbdBwvu2//2jgcNpyfyk7oseDHaByGyjQAd7DsxKHbAKypjIQlDSGgV4Awxl1YTHwZ14twjBoj/jCCo9NMETSu0OVeph19V9vWbS3I7Gnz44QLS7ZiBkjIwiw0SQ2Pz3Dq9p3/0uurrKKVKxF8rbkKFmDegbfEoMeuuyQ9wDzQ5iGTB6SusPHzTk7DMhbZ4IuH1f9Yv9pj1djUIhvM+lhfbpMGT2WN/IGmEBkntRkqDo5VBCErM9Enrsgag+s3LO6nrlwFpKChh/aHHJkIMfvftz0GNDmXzjyWpj3lzkwbMnE97ymFcZBy8EDmvnkO33g/J+KS/++rrqDEZdkqS4yrcGPPHwfaE/suJ5dc1Bna/0HD6VIpAh1WR+9haxp7NFCktARkm+MvtZo0RREaB4rBk6ZXpNlZFQt2F+hwNOxdnaQ8LvJSYcXnx6Ap3n7eG8DDl6eCJGXv0eH4m4/9o4lmomRmy9KczcaGb/cNjWF1UvIj+X1zm/PJu9KxVNfAjsVJpgbvtKHcPHBFvzX2Og+H2rOsolXUbkQJC+MCrzF0fPIY2d4c3xVcNyahEIuU53QK23CmLaY0yvkE=
   - secure: mQRUvojwyohNlOEwSStErAfzrrkBgAcIm43ILWwSXQt9C7+Mf9QCNEcGkdjX+PzC+6ZyjiaLJK1sbyDz/Uklo0Z2osBLwtCgzsSaWS3FvZrq1urWFdTCrOQURG5YvRGKsrQ5cW2wXJaYy3BSw/OLGKF6TbTuoNIsYzeeow2iEn9q4Z0l5kkZS7DdyEHuM+cXJhLQ5WVEyPwX2DeAPdPZPyE9C0+MRwYpt/76bMcrcLc+r/P7rbLWt4cAvTpLCa5YuMNRxXrj3T38v9qi1qZ3O7SSRBuKJQW/xRo2aQEtMesGHZpAW0yXbpPvx4vlhl24YkRNCB5W7Rq3JpDqFPJ7M6cQNGR4u4kCwb5Y3wZaNq92Y2NHFCGV/XF4kyA8SZcBaCcap4hHxT7R005VRAzHy2Aiexbx48O7ZvrxSH1/fCGn1bXq+wT9a5wuFh3QBrCHY5uCumsA30Hl586ICqXgnHhvFkJjUk6i3NdYckfN5QmExDMEVgoJdVNImhirCvEJlZGnhC9bflRyGTZ0nXWfXGkICvdNhYRnKYHtllv/dDZ7oIWr5ByrEo2ZQ5g8t/1bzoX/CjzS2XTqKGjSO/RBvvfN+Vq85OLVVxh8B4iA5vfXV85FcgBbIAki6gZsQklYLUKyMuFuCdLdqZcwiaxbTGUsT/a8XrJdPEZC3MZdnZo=
 script:
-- cd $TEST_DIR && mvn clean package docker:build
-after_success:
-  after_success:
-  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-  - export REPO=johncarnell/spmia
-  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH ; fi`
-  - docker build -f src/main/Docker/Dockerfile -t $REPO:$COMMIT .
-  - docker tag $REPO:$COMMIT $REPO:$TAG
-  - docker tag $REPO:$COMMIT $REPO:travis-$TRAVIS_BUILD_NUMBER
-  - docker push $REPO
+- cd $TEST_DIR &&  docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" &&   mvn clean package docker:build
