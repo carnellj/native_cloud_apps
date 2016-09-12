@@ -3,6 +3,8 @@ package com.thoughtmechanix.licenses.controllers;
 import com.thoughtmechanix.licenses.model.License;
 import com.thoughtmechanix.licenses.services.LicenseService;
 import com.thoughtmechanix.licenses.config.ServiceConfig;
+import com.thoughtmechanix.licenses.utils.UserContext;
+import org.fluentd.logger.FluentLogger;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping(value="v1/organizations/{organizationId}/licenses")
@@ -31,6 +35,7 @@ public class LicenseServiceController {
 
     private static final Logger logger = LoggerFactory.getLogger(LicenseServiceController.class);
 
+
     @RequestMapping(value="/",method = RequestMethod.GET)
     public List<License> getLicenses( @PathVariable("organizationId") String organizationId) {
 
@@ -40,6 +45,7 @@ public class LicenseServiceController {
     @RequestMapping(value="/{licenseId}",method = RequestMethod.GET)
     public License getLicenses( @PathVariable("organizationId") String organizationId,
                                 @PathVariable("licenseId") String licenseId) {
+        UserContext.flog("Entering the license-service-controller");
         logger.debug("Found tmx-correlation-id in license-service-controller: {} ", request.getHeader("tmx-correlation-id"));
         return licenseService.getLicense(organizationId, licenseId);
     }

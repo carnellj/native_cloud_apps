@@ -4,28 +4,19 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 
-/*
-     There are three types of filters in Zuul
-     Pre filters (This get get called first)  "pre"
-     Route filters (These get call second)    "routing"
-     Post Filter   (This get called last)     "post"
- */
 public class TrackingFilter extends ZuulFilter{
-    private static final String FILTER_TYPE = "pre";
     private static final int FILTER_ORDER =  1;
     private static final boolean  SHOULD_FILTER=true;
 
-    private static final Logger logger = LoggerFactory.getLogger(TrackingFilter.class);
-
-    public TrackingFilter(){
-
-    }
+    @Autowired
+    FilterUtils filterUtils;
 
     @Override
     public String filterType() {
-        return FILTER_TYPE;
+        return FilterUtils.PRE_FILTER_TYPE;
     }
 
     @Override
@@ -38,30 +29,12 @@ public class TrackingFilter extends ZuulFilter{
     }
 
     private boolean isCorrelationIdPresent(){
-      RequestContext ctx = RequestContext.getCurrentContext();
-      if (ctx.getRequest().getHeader("tmx-correlation-id") !=null){
+      if (filterUtils.getCorrelationId() !=null){
           return true;
       }
 
       return false;
     }
-
-    private String getCorrelationIdFromHeader(){
-       RequestContext ctx = RequestContext.getCurrentContext();
-       if (ctx.getRequest().getHeader("tmx-correlation-id") !=null) {
-           return ctx.getRequest().getHeader("tmx-correlation-id");
-       }
-       else{
-         return  ctx.getZuulRequestHeaders().get("tmx-correlation-id");
-       }
-
-    }
-
-    private void setCorrelationId(String correlationId){
-        RequestContext ctx = RequestContext.getCurrentContext();
-        ctx.addZuulRequestHeader("tmx-correlation-id", correlationId);
-    }
-
 
     private String generateCorrelationId(){
         return java.util.UUID.randomUUID().toString();
@@ -70,11 +43,11 @@ public class TrackingFilter extends ZuulFilter{
     public Object run() {
 
         if (isCorrelationIdPresent()) {
-            logger.debug(">>>> tmx-correlation-id found in tracking filter: {}. ", getCorrelationIdFromHeader());
+            filterUtils.flog(String.format("tmx-correlation-id found in tracking filter: %s. ", filterUtils.getCorrelationId()));
         }
         else{
-            setCorrelationId( generateCorrelationId() );
-            logger.debug(">>>> tmx-correlation-id generated in tracking filter: {}.", getCorrelationIdFromHeader());
+            filterUtils.setCorrelationId(generateCorrelationId());
+            filterUtils.flog(String.format("tmx-correlation-id generated in tracking filter: {}.", filterUtils.getCorrelationId()));
         }
         return null;
     }

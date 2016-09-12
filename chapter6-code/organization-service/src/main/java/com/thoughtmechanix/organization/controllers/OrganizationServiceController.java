@@ -29,16 +29,15 @@ public class OrganizationServiceController {
 
 
     private static final Logger logger = LoggerFactory.getLogger(OrganizationServiceController.class);
-    private static FluentLogger FLOG = FluentLogger.getLogger("thoughtmechanix.organizationserver", "fluentd", 24224);
+    private static FluentLogger FLOG = FluentLogger.getLogger("tmx.organizationserver", "fluentd", 24224);
 
 
     @RequestMapping(value="/{organizationId}",method = RequestMethod.GET)
     public Organization getOrganization( @PathVariable("organizationId") String organizationId) {
-        Map<String, Object> data = new HashMap<String, Object>();
-        data.put(" tmx-correlation-id", UserContext.getCorrelationId());
 
-        FLOG.log("organizationservice", data );
-        logger.debug("I AM HERE !!!!!");
+
+        UserContext.flog(String.format("Looking up data for org %s",organizationId ));
+
         return orgService.getOrg(organizationId);
     }
 

@@ -42,6 +42,7 @@ licensingservice:
       - "configserver:configserver"
       - "eurekaserver:eurekaserver"
       - "zuulserver:zuulserver"
+      - "fluentd:fluentd"
     environment:
       PROFILE: "default"
       SERVER_PORT: "8080"
@@ -72,8 +73,8 @@ es:
 #    - ${PWD}/es-data:/usr/share/elasticsearch/data
 # The following will store es data in your boot2docker vm
 # Use 'docker-machine ssh default' to remove it
-  volumes:
-    - /srv/docker/es:/usr/share/elasticsearch/data
+ # volumes:
+ #   - /srv/docker/es:/usr/share/elasticsearch/data
   ports:
     - 9200:9200
     - 9300:9300

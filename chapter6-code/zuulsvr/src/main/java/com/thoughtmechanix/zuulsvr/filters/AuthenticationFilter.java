@@ -5,20 +5,18 @@ import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class AuthenticationFilter extends ZuulFilter {
-    private static final String FILTER_TYPE = "pre";
     private static final int FILTER_ORDER =  2;
     private static final boolean  SHOULD_FILTER=true;
 
-    private static final Logger logger = LoggerFactory.getLogger(AuthenticationFilter.class);
-
-    public AuthenticationFilter() {
-    }
+    @Autowired
+    FilterUtils filterUtils;
 
     @Override
     public String filterType() {
-        return FILTER_TYPE;
+        return filterUtils.PRE_FILTER_TYPE;
     }
 
     @Override
@@ -32,9 +30,7 @@ public class AuthenticationFilter extends ZuulFilter {
     }
 
     private boolean isAuthTokenPresent() {
-
-        RequestContext ctx = RequestContext.getCurrentContext();
-        if (ctx.getRequest().getHeader("tmx-auth-token") !=null){
+        if (filterUtils.getAuthToken() !=null){
             return true;
         }
 
@@ -43,15 +39,16 @@ public class AuthenticationFilter extends ZuulFilter {
     @Override
     public Object run() {
         RequestContext ctx = RequestContext.getCurrentContext();
-        String correlationId = ctx.getZuulRequestHeaders().get("tmx-correlation-id");
-        logger.debug("Entering the authorization filter");
+
+        filterUtils.flog("Entering the authentication filter");
 
         if (isAuthTokenPresent()){
-            logger.debug(">>>Authentication token is present. Correlation id: {}", correlationId);
+           filterUtils.flog("Authentication token is present.");
             return null;
         }
 
-        logger.debug(">>>Authentication token is not present. Correlation id: {}", correlationId);
+        filterUtils.flog("Authentication token is not present.");
+
         ctx.setResponseStatusCode(401);
         ctx.setSendZuulResponse(false);
         return null;

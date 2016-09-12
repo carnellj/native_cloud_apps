@@ -16,9 +16,6 @@ import java.io.IOException;
 
 @Component
 public class UserContextFilter implements Filter {
-
-    private static final Logger logger = LoggerFactory.getLogger(UserContextFilter.class);
-
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
 
@@ -28,19 +25,20 @@ public class UserContextFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
             throws IOException, ServletException {
 
-
-        final HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
+        UserContext.flog("Entering the UserContextFilter");
+        HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         String correlationId = httpServletRequest.getHeader(UserContext.CORRELATION_ID);
         String userId = httpServletRequest.getHeader(UserContext.USER_ID);
         String authToken = httpServletRequest.getHeader(UserContext.AUTH_TOKEN);
         String orgId = httpServletRequest.getHeader(UserContext.ORG_ID);
 
-        logger.debug(">>>> I am in the organization service UserContextFilter: {}", correlationId);
+
         UserContext.setCorrelationId(correlationId);
         UserContext.setUserId(userId);
         UserContext.setAuthToken(authToken);
         UserContext.setOrgId(orgId);
 
+        UserContext.flog("Exiting the UserContextFilter");
         filterChain.doFilter(httpServletRequest, servletResponse);
     }
 
