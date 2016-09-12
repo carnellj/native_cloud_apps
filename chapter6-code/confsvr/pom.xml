@@ -55,6 +55,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.2.3</version>
                 <configuration>
+		    <serverId>docker-hub</serverId>
                     <imageName>johncarnell/${docker.image.prefix}/${project.artifactId}</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>

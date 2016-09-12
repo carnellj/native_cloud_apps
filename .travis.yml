@@ -24,4 +24,4 @@ env:
   - TEST_DIR=chapter6-code/licensing-service
   - TEST_DIR=chapter6-code/organization-service
 script:
-- cd $TEST_DIR &&  mvn --settings ../maven/setting.xml clean package docker:build -DpushImage
+- cd $TEST_DIR &&  mvn --settings ../../maven/setting.xml clean package docker:build -DpushImage
