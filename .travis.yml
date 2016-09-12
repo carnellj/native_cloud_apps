@@ -34,7 +34,5 @@ env:
   - TEST_DIR=chapter6-code/eurekasvr
   - TEST_DIR=chapter6-code/licensing-service
   - TEST_DIR=chapter6-code/organization-service
-before_script:
-- docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 script:
-- cd $TEST_DIR &&  mvn clean package docker:build -DpushImage
+- cd $TEST_DIR &&  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && mvn clean package docker:build -DpushImage
