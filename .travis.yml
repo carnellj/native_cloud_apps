@@ -26,4 +26,4 @@ env:
 before_script:
 - docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 script:
-- cd $TEST_DIR &&  echo "<settings><servers><server><id>docker-hub</id><username>\${env.DOCKER_USERNAME}</username><password>\${env.DOCKER_PASSWORD}</password></server></servers></settings>" > settings.xml  && cat settings.xml && mvn clean package docker:build -DpushImage -gs settings.xml
+- cd $TEST_DIR &&  echo "<settings><servers><server><id>docker-hub</id><email>\${env.DOCKER_EMAIL}</email><username>\${env.DOCKER_USERNAME}</username><password>\${env.DOCKER_PASSWORD}</password></server></servers></settings>" > settings.xml  && cat settings.xml && mvn clean package docker:build -DpushImage -gs settings.xml
