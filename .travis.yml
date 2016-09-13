@@ -23,7 +23,5 @@ env:
   - TEST_DIR=chapter6-code/eurekasvr
   - TEST_DIR=chapter6-code/licensing-service
   - TEST_DIR=chapter6-code/organization-service
-before_script:
-- docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
 script:
-- cd $TEST_DIR &&  echo "<settings><servers><server><id>docker-hub</id><configuration><email>$DOCKER_EMAIL</email></configuration><username>$DOCKER_USERNAME</username><password>$DOCKER_PASSWORD</password></server></servers></settings>" > settings.xml  && mvn clean package docker:build -DpushImage --settings settings.xml
+- cd $TEST_DIR &&  login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && echo "<settings><servers><server><id>docker-hub</id><configuration><email>$DOCKER_EMAIL</email></configuration><username>$DOCKER_USERNAME</username><password>$DOCKER_PASSWORD</password></server></servers></settings>" > settings.xml  && mvn clean package docker:build -DpushImage --settings settings.xml
