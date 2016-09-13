@@ -24,4 +24,4 @@ env:
   - TEST_DIR=chapter6-code/licensing-service
   - TEST_DIR=chapter6-code/organization-service
 script:
-- cd $TEST_DIR &&  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && echo ">>>>$TMX_DOCKER_IMAGE" > settings.xml  && mvn clean package docker:build 
+- cd $TEST_DIR &&  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && echo ">>>>$TMX_DOCKER_IMAGE" > settings.xml  && mvn clean package docker:build  && docker push johncarnell/$TMX_DOCKER_IMAGE
