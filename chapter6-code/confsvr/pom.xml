@@ -46,7 +46,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <start-class>com.thoughtmechanix.confsvr.ConfigServerApplication</start-class>
         <java.version>1.8</java.version>
-        <docker.image.prefix>ch6-thoughtmechanix</docker.image.prefix>
+        <docker.image.name>johncarnell/tmx-chapter6-configserver</docker.image.name>
     </properties>
     <build>
         <plugins>
@@ -55,9 +55,8 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.13</version>
                 <configuration>
-		    <serverId>docker-hub</serverId>
-		    <registryUrl>https://registry.hub.docker.com/v1/</registryUrl>
-		    <imageName>johncarnell/tmx/${docker.image.prefix}/${project.artifactId}</imageName>-->
+
+		    <imageName>${docker.image.name}</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
