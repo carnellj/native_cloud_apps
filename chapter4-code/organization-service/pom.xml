@@ -16,7 +16,6 @@
         <artifactId>spring-cloud-starter-parent</artifactId>
         <version>1.0.2.RELEASE</version>
         <relativePath/>
-        <!-- lookup parent from repository -->
     </parent>
 
     <dependencies>
@@ -75,7 +74,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.2.3</version>
                 <configuration>
-                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <imageName>${docker.image.name}</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
