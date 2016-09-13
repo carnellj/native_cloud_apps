@@ -56,7 +56,7 @@
                 <version>0.4.13</version>
                 <configuration>
 		    <serverId>docker-hub</serverId>
-		     <registryUrl>https://index.docker.io/v1/</registryUrl>
+		     <registryUrl>https://index.docker.io/v2/</registryUrl>
 		     <imageName>johncarnell/tmx/${docker.image.prefix}/${project.artifactId}</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
