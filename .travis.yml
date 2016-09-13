@@ -22,6 +22,10 @@ env:
   - TEST_DIR=chapter2-code;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter2-licensing-service
   - TEST_DIR=chapter3-code/licensing-service;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter3-licensing-service
   - TEST_DIR=chapter3-code/confsvr;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter3-confsvr
+  - TEST_DIR=chapter4-code/confsvr;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter4-confsvr
+  - TEST_DIR=chapter4-code/eurekasvr;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter4-eurekasvr
+  - TEST_DIR=chapter4-code/licensing-service;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter4-licensing-service
+  - TEST_DIR=chapter4-code/organization-service;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter4-organization-service  
   - TEST_DIR=chapter6-code/confsvr;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter6-confsvr
   - TEST_DIR=chapter6-code/eurekasvr;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter6-eurekasvr
   - TEST_DIR=chapter6-code/zuulsvr;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter6-zuulsvr
