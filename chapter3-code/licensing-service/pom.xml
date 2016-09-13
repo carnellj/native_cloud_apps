@@ -60,7 +60,7 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <start-class>com.thoughtmechanix.licenses.Application</start-class>
-        <docker.image.prefix>ch3-thoughtmechanix</docker.image.prefix>
+        <docker.image.name>johncarnell/tmx-chapter3-licensing-service</docker.image.name>
     </properties>
 
     <build>
@@ -70,7 +70,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.2.3</version>
                 <configuration>
-                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <imageName>${docker.image.name}</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <resource>

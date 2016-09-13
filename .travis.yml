@@ -20,6 +20,8 @@ env:
   - secure: K3qdAHF0ju54ZQqKoRohqkyZLfkdOg2EAq7NtLBLLuFrX+J6ZUORoQhP/SzaNfVfCjRKOmBvSMc7y9kk3YFl2qhYvVg8gI5gWREsDUHchjLGI13PGGI3ncHjYHw03byqOqysf2HfHE4/2TZ+HZgtPrfa9txNIZuz59weN3CCEQ1+4jGOKZCTJr5WDKJZNqq7GQH3pdqP54jEYT1iJqQqwjxhuAy5vpZJmP0RpyOA/McdA4u6gbnGOiuphs5OdF5LGmba0HyI+gNIrDK94mHSPhjhaLpfxhCxA8oFEy7Ylot0W2CBgFeBYZHSxMNnmpf4W/D3pKQlfJgJmPhm27IBkJP8UhAr9YPiPWqvXG/WJk14FMA0ZV+38kRylT/nIt344BLmvMFVuz5WDaJSaZaY9fgNDnqkB6cVJZF5FpZnBynzIOZVvMFLDJuR+4xDEIk7SYX8PDrehQaTSHzCdZNON6fRLikOdTCudOAMvavoCWwNniWctM4j/a9A/mmhR3vWh7igLXngJWVYROethIW6/CATPAkaAXxNGDENABNbmm75AjLVGMoF1D6YIhQsOIpSS1aDoWPQuQzh/cGG+TaMjavPGjP+YSzFPHNHe7SpkxrKPBwPD9iNS8yjlS7SKnFi9sUu3U3ukWtYOE2ctxCdNgRR8rUPziRs9YluzZUa1w8=
   matrix:
   - TEST_DIR=chapter2-code/licensing-service;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter2-licensing-service
+  - TEST_DIR=chapter3-code/licensing-service;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter3-licensing-service
+  - TEST_DIR=chapter3-code/confsvr;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter3-confsvr
   - TEST_DIR=chapter6-code/confsvr;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter6-confsvr
   - TEST_DIR=chapter6-code/eurekasvr;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter6-eurekasvr
   - TEST_DIR=chapter6-code/zuulsvr;TMX_DOCKER_IMAGE=johncarnell/tmx-chapter6-zuulsvr
