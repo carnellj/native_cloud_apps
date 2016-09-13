@@ -44,7 +44,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <start-class>com.thoughtmechanix.zuulsvr.ZuulServerApplication</start-class>
         <java.version>1.8</java.version>
-        <docker.image.name>johncarnell/tmx-chapter6-zuulsvr</docker.image.name>
+        <docker.image.name>johncarnell/tmx-zuulsvr</docker.image.name>
+        <docker.image.tag>chapter6</docker.image.tag>
     </properties>
 
     <build>
@@ -54,7 +55,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.2.3</version>
                 <configuration>
-                    <imageName>${docker.image.name}</imageName>
+                    <imageName>${docker.image.name}:${docker.image.tag}</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
