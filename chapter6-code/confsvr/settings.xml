@@ -1,0 +1,12 @@
+<settings>
+	<servers>
+		<server>
+			<id>docker-hub</id>
+			<configuration>
+				<email>john_carnell@yahoo.com</email>
+			</configuration>
+			<username>johncarnell</username>
+			<password>2blackbelt</password>
+		</server>
+</servers>
+</settings>
