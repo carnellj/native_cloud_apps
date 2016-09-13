@@ -24,4 +24,4 @@ env:
   - TEST_DIR=chapter6-code/licensing-service
   - TEST_DIR=chapter6-code/organization-service
 script:
-- cd $TEST_DIR &&  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && echo "<settings><servers><server><id>docker-hub</id><configuration><email>$DOCKER_EMAIL</email></configuration><username>$DOCKER_USERNAME</username><password>$DOCKER_PASSWORD</password></server></servers></settings>" > settings.xml  && mvn clean package docker:build
+- cd $TEST_DIR &&  docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && echo "<settings><servers><server><id>docker-hub</id><configuration><email>$DOCKER_EMAIL</email></configuration><username>$DOCKER_USERNAME</username><password>$DOCKER_PASSWORD</password></server></servers></settings>" > settings.xml  && mvn clean package docker:build -DpushImage
