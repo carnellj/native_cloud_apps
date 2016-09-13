@@ -1,4 +1,4 @@
 licensingservice:
-    image: ch2-thoughtmechanix/licensing-service
+    image: tmx-licensing-service:chapter2
     ports:
       - "8080:8080"

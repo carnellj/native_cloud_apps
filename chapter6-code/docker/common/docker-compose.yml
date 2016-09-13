@@ -1,5 +1,5 @@
 eurekaserver:
-   image:   tmx-chapter6-eurekasvr
+   image:   tmx-eurekasvr:chapter6
    ports:
        - "8761:8761"
 
@@ -13,7 +13,7 @@ configserver:
        EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 
 zuulserver:
-    image: tmx-chapter6-zuulsvr
+    image: tmx-zuulsvr:chapter6
     ports:
       - "5555:5555"
     links:
@@ -33,7 +33,7 @@ database:
       - POSTGRES_DB=eagle_eye_local
 
 licensingservice:
-    image: tmx-chapter6-licensing-service
+    image: tmx-licensing-service:chapter6
     ports:
       - "8080:8080"
       - "8090:8090"
@@ -50,7 +50,7 @@ licensingservice:
       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 
 organizationservice:
-    image: tmx-chapter6-organization-service
+    image: tmx-organization-service:chapter6
     ports:
       - "8085:8085"
     links:

@@ -87,7 +87,7 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.2.3</version>
                 <configuration>
-                    <imageName>${docker.image.name}${docker.image.tag}</imageName>
+                    <imageName>${docker.image.name}:${docker.image.tag}</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <resource>

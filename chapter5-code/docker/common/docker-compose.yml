@@ -1,10 +1,10 @@
 eurekaserver:
-   image:   ch5-thoughtmechanix/eurekasvr
+   image:   tmx-eurekasvr:chapter5
    ports:
        - "8761:8761"
 
 configserver:
-    image: ch5-thoughtmechanix/configurationserver
+    image: tmx-confsvr:chapter5
     ports:
        - "8888:8888"
     links:
@@ -22,7 +22,7 @@ database:
       - POSTGRES_DB=eagle_eye_local
 
 licensingservice:
-    image: ch5-thoughtmechanix/licensing-service
+    image: tmx-licensing-service:chapter5
     ports:
       - "8080:8080"
       - "8090:8090"
@@ -37,7 +37,7 @@ licensingservice:
       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
 
 organizationservice:
-    image: ch5-thoughtmechanix/organization-service
+    image: tmx-organization-service:chapter5
     ports:
       - "8085:8085"
     links:
@@ -49,4 +49,3 @@ organizationservice:
       SERVER_PORT: "8085"
       CONFIGSERVER_URI: "http://configserver:8888"
       EUREKASERVER_URI: "http://eurekaserver:8761/eureka/"
-

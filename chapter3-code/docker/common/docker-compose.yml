@@ -1,5 +1,5 @@
 configserver:
-    image: ch3-thoughtmechanix/configurationserver
+    image: tmx-confsvr:chapter3
     ports:
        - "8888:8888"
 database:
