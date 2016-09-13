@@ -57,7 +57,8 @@
                 <configuration>
 		    <serverId>docker-hub</serverId>
 		     <registryUrl>https://index.docker.io/v2/</registryUrl>
-		     <imageName>johncarnell/tmx/${docker.image.prefix}/${project.artifactId}</imageName>
+		     <!--<imageName>johncarnell/tmx/${docker.image.prefix}/${project.artifactId}</imageName>-->
+		     <imageName>johncarnell/tmx/${project.artifactId}</imageName>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
