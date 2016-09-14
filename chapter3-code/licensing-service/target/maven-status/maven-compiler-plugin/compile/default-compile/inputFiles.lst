@@ -1,8 +1,0 @@
-/Users/johncarnell1/book/native_cloud_appsv2_code/chapter3-code/licensing-service/src/main/java/com/thoughtmechanix/licenses/Application.java
-/Users/johncarnell1/book/native_cloud_appsv2_code/chapter3-code/licensing-service/src/main/java/com/thoughtmechanix/licenses/repository/LicenseRepository.java
-/Users/johncarnell1/book/native_cloud_appsv2_code/chapter3-code/licensing-service/src/main/java/com/thoughtmechanix/licenses/model/Organization.java
-/Users/johncarnell1/book/native_cloud_appsv2_code/chapter3-code/licensing-service/src/main/java/com/thoughtmechanix/licenses/controllers/LicenseServiceController.java
-/Users/johncarnell1/book/native_cloud_appsv2_code/chapter3-code/licensing-service/src/main/java/com/thoughtmechanix/licenses/model/License.java
-/Users/johncarnell1/book/native_cloud_appsv2_code/chapter3-code/licensing-service/src/main/java/com/thoughtmechanix/licenses/services/OrganizationService.java
-/Users/johncarnell1/book/native_cloud_appsv2_code/chapter3-code/licensing-service/src/main/java/com/thoughtmechanix/licenses/config/ServiceConfig.java
-/Users/johncarnell1/book/native_cloud_appsv2_code/chapter3-code/licensing-service/src/main/java/com/thoughtmechanix/licenses/services/LicenseService.java
