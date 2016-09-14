@@ -1,5 +1,5 @@
 #Introduction
--All of the code examples in this book will include maven files for building docker images of the services being built.  As we progress through the book we will be leveraging more and more infrastructure as we build our services out.   These additional pieces of infrastructure will also be docker containers.  
+All of the code examples in this book will include maven files for building docker images of the services being built.  As we progress through the book we will be leveraging more and more infrastructure as we build our services out.   These additional pieces of infrastructure will also be docker containers.  
 
 
 #Software Needed
@@ -13,9 +13,13 @@ find some of the same projects being defined over and over again.  This was inte
 github repos.
 
 [Chapter 1 Introduction] (https://github.com/carnellj/spmia-chapter1)
-[Chapter 2 Introduction to Microservices] (https://github.com/carnellj/spmia-chapterr2)
-[Chapter 3 Spring Cloud Configuration] (https://github.com/carnellj/spmia-chapter3)
-[Chapter 4 Spring Service Discovery] (https://github.com/carnellj/spmia-chapter4)
-[Chapter 5 Spring Cloud Client Side Resiliency] (https://github.com/carnellj/spmia-chapter5)
-[Chapter 6 Spring Cloud Routing] (https://github.com/carnellj/spmia-chapter6)
 
+[Chapter 2 Introduction to Microservices] (https://github.com/carnellj/spmia-chapterr2)
+
+[Chapter 3 Spring Cloud Configuration] (https://github.com/carnellj/spmia-chapter3)
+
+[Chapter 4 Spring Service Discovery] (https://github.com/carnellj/spmia-chapter4)
+
+[Chapter 5 Spring Cloud Client Side Resiliency] (https://github.com/carnellj/spmia-chapter5)
+
+[Chapter 6 Spring Cloud Routing] (https://github.com/carnellj/spmia-chapter6)
