@@ -34,6 +34,7 @@ env:
   - TEST_DIR=chapter4-code/eurekasvr;TMX_DOCKER_IMAGE=johncarnell/tmx-eurekasvr:chapter4
   - TEST_DIR=chapter5-code/eurekasvr;TMX_DOCKER_IMAGE=johncarnell/tmx-eurekasvr:chapter5
   - TEST_DIR=chapter6-code/eurekasvr;TMX_DOCKER_IMAGE=johncarnell/tmx-eurekasvr:chapter6
+  - TEST_DIR=chapter6-code/fluentd;TMX_DOCKER_IMAGE=johncarnell/tmx-fluentd:chapter6
   - TEST_DIR=chapter6-code/zuulsvr;TMX_DOCKER_IMAGE=johncarnell/tmx-zuulsvr:chapter6
 
 script:
