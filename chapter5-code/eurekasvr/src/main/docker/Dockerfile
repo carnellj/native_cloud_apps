@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk:latest
 RUN mkdir -p /usr/local/eurekaserver
 ADD eurekasvr-0.0.1-SNAPSHOT.jar /usr/local/eurekaserver/
 EXPOSE 8761
