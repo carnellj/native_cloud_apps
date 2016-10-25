@@ -14,7 +14,7 @@ github repos.
 
 [Chapter 1 Introduction] (https://github.com/carnellj/spmia-chapter1)
 
-[Chapter 2 Introduction to Microservices] (https://github.com/carnellj/spmia-chapterr2)
+[Chapter 2 Introduction to Microservices] (https://github.com/carnellj/spmia-chapter2)
 
 [Chapter 3 Spring Cloud Configuration] (https://github.com/carnellj/spmia-chapter3)
 
