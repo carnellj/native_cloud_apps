@@ -12,14 +12,22 @@ Each chapter in the book is broken down into its own github repository and is de
 find some of the same projects being defined over and over again.  This was intential to ensure that the code in each chapter could stand on its.  Here are the links to the individual
 github repos.
 
-[Chapter 1 Introduction] (https://github.com/carnellj/spmia-chapter1)
+[Chapter 1 Introduction](https://github.com/carnellj/spmia-chapter1)
 
-[Chapter 2 Introduction to Microservices] (https://github.com/carnellj/spmia-chapter2)
+[Chapter 2 Introduction to Microservices](https://github.com/carnellj/spmia-chapter2)
 
-[Chapter 3 Spring Cloud Configuration] (https://github.com/carnellj/spmia-chapter3)
+[Chapter 3 Spring Cloud Configuration](https://github.com/carnellj/spmia-chapter3)
 
-[Chapter 4 Spring Service Discovery] (https://github.com/carnellj/spmia-chapter4)
+[Chapter 4 Spring Service Discovery](https://github.com/carnellj/spmia-chapter4)
 
-[Chapter 5 Spring Cloud Client Side Resiliency] (https://github.com/carnellj/spmia-chapter5)
+[Chapter 5 Spring Cloud Client Side Resiliency](https://github.com/carnellj/spmia-chapter5)
 
-[Chapter 6 Spring Cloud Routing] (https://github.com/carnellj/spmia-chapter6)
+[Chapter 6 Spring Cloud Routing](https://github.com/carnellj/spmia-chapter6)
+
+[Chapter 7 Securing your microservices](https://github.com/carnellj/spmia-chapter7)
+
+[Chapter 8 Event-driven architecture with Spring Cloud Stream](https://github.com/carnellj/spmia-chapter8)
+
+[Chapter 9 Distributed tracing with Spring Cloud Sleuth and Zipkin](https://github.com/carnellj/spmia-chapter9)
+
+[Chapter 10 Deployment pipelines](https://github.com/carnellj/spmia-chapter10)
